@@ -38,12 +38,27 @@ const patientLogin = async (req, res) => {
   });
 };
 
+const getAllPatients = async (req,res) => {
+  try {
+      const getAllPatients = await Patient.find();
+      return res.status(200).json({
+          success: true,
+          allPatients: getAllPatients
+      })
+  } catch (error) {
+      return res.status(500).json({
+          success: false,
+          error: `Error Getting Users: ${error.message}`
+      })
+  }
+}
+
 const getPatientbyID = async (req,res) => {
   try {
-          const patient = await Patient.findById(id);
+          const patient = await Patient.findById(req.params.id);
             return res.status(200).json({
                 success: true,
-                data: user
+                data: patient
             })
         } catch (error) {
             return res.status(500).json({
@@ -102,4 +117,4 @@ const deletePatient = async (req, res, next) => {
     }
 }
 
-module.exports = { patientRegister, patientLogin, getPatientbyID, updatePatient ,deletePatient };
+module.exports = { patientRegister, patientLogin, getPatientbyID, updatePatient ,deletePatient, getAllPatients };

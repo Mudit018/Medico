@@ -39,13 +39,27 @@ const doctorLogin = async (req, res) => {
     });
   };
 
+const getAlldoctors = async (req,res) => {
+    try {
+        const allDoctors = await Doctor.find();
+        return res.status(200).json({
+            success: true,
+            doctorData: allDoctors
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            error: `Error Getting Users: ${error.message}`
+        })
+    }
+}
 
 const getDoctorbyID = async (req,res) => {
     try {
-            const patient = await Doctor.findById(id);
+            const doctor = await Doctor.findById(req.params.id);
               return res.status(200).json({
                   success: true,
-                  data: user
+                  doctorData: doctor
               })
           } catch (error) {
               return res.status(500).json({
@@ -104,4 +118,4 @@ const getDoctorbyID = async (req,res) => {
       }
   }
 
-module.exports = {doctorRegister ,doctorLogin,getDoctorbyID,updateDoctor,deleteDoctor};
+module.exports = {doctorRegister ,doctorLogin,getDoctorbyID,updateDoctor,deleteDoctor, getAlldoctors};

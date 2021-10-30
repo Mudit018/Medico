@@ -7,7 +7,8 @@ const {
   patientRegister,
   getPatientbyID,
   updatePatient,
-  deletePatient
+  deletePatient,
+  getAllPatients
 } = require("../controllers/patientController");
 
 const {
@@ -15,7 +16,8 @@ const {
   doctorLogin,
   getDoctorbyID,
   updateDoctor,
-  deleteDoctor
+  deleteDoctor,
+  getAlldoctors
 } = require("../controllers/doctorController");
 
 const Doctorlogin = require("../controllers/doctorController");
@@ -28,7 +30,8 @@ router.post("/patientregister",patientRegister);
 router.post("/doctorregister",doctorRegister);
 
 router.route("/patient/:id").get(getPatientbyID).patch(updatePatient).delete(deletePatient);
-
+router.get("/alldoctors", getAlldoctors);
+router.get("/allpatients",getAllPatients);
 router.route("/doctor/:id").get(getDoctorbyID).patch(updateDoctor).delete(deleteDoctor)
 
 module.exports = router;
