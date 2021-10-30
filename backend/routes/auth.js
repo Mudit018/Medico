@@ -3,21 +3,32 @@ const passport = require("passport");
 const router = express.Router();
 
 const {
-  Patientlogin,
-  Patientregister,
+  patientLogin,
+  patientRegister,
   getPatientbyID,
   updatePatient,
   deletePatient
 } = require("../controllers/patientController");
 
+const {
+  doctorRegister,
+  doctorLogin,
+  getDoctorbyID,
+  updateDoctor,
+  deleteDoctor
+} = require("../controllers/doctorController");
+
 const Doctorlogin = require("../controllers/doctorController");
 
-router.post("/patientlogin",passport.authenticate("local"),Patientlogin);
+router.post("/patientlogin",passport.authenticate("patient-local"),patientLogin);
+
+router.post("/doctorlogin",passport.authenticate("doctor-local"),doctorLogin)
   
-router.post("/patientregister",Patientregister);
+router.post("/patientregister",patientRegister);
+router.post("/doctorregister",doctorRegister);
 
 router.route("/patient/:id").get(getPatientbyID).patch(updatePatient).delete(deletePatient);
-  // .route("/Doctorlogin")
-  // .get(Doctorlogin);
+
+router.route("/doctor/:id").get(getDoctorbyID).patch(updateDoctor).delete(deleteDoctor)
 
 module.exports = router;

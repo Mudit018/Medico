@@ -1,7 +1,7 @@
 const Patient = require("../models/patient.model");
 const genPassword = require("../utils/passwordUtils").genPassword;
 
-const Patientregister = async (req, res) => {
+const patientRegister = async (req, res) => {
   try {
     console.log(req.body.password);
     const saltHash = genPassword(req.body.password);
@@ -31,7 +31,7 @@ const Patientregister = async (req, res) => {
     });
   }
 };
-const Patientlogin = async (req, res) => {
+const patientLogin = async (req, res) => {
   return res.status(200).json({
     success: true,
     data: req.user,
@@ -102,4 +102,4 @@ const deletePatient = async (req, res, next) => {
     }
 }
 
-module.exports = { Patientregister, Patientlogin, getPatientbyID, updatePatient ,deletePatient };
+module.exports = { patientRegister, patientLogin, getPatientbyID, updatePatient ,deletePatient };

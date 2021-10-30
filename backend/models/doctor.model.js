@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 
-const patient = mongoose.Schema({
+const DoctorSchema = mongoose.Schema({
   fname: {
     type: String,
     required: true,
   },
   lname: {
     type: String,
-    required: true,
+    // required: true,
   },
   username: {
     type: String,
@@ -16,26 +16,26 @@ const patient = mongoose.Schema({
   },
   email: {
     type: String,
-    required: true,
+    // required: true,
     unique: true,
   },
   age: {
     type: Number,
-    required: true,
+    // required: true,
   },
   gender: {
     type: String,
-    required: true,
+    // required: true,
     enum: ["M", "F"],
   },
   rating: {
     type: Number,
-    required: true,
+    // required: true,
     default: 0,
   },
   category: {
     type: String,
-    required: true,
+    // required: true,
     enum: {
       values: ["SURGEON", "PSYCHATRIST", "GENERAL"],
       message: "NOT A VALID CATEGORY",
@@ -62,4 +62,6 @@ const patient = mongoose.Schema({
   },
 });
 
-module.exports = patient;
+const Doctor = mongoose.model('Doctor', DoctorSchema);
+
+module.exports = Doctor;
