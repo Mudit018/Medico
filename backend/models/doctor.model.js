@@ -50,16 +50,42 @@ const DoctorSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-
-  appointments: {
-    type: [
-      {
-        patient_id: { type: mongoose.Schema.Types.ObjectId, required: true },
-        time: { type: Date, required: true },
-      },
-    ],
-    default: [],
+  slot1:{
+    type:{
+      patient_id:{ type: mongoose.Schema.Types.ObjectId },
+      available: {type: Boolean},
+    },
+    default: {patient_id: null, available: true}
   },
+  slot2:{
+    type:{
+      patient_id:{ type: mongoose.Schema.Types.ObjectId  },
+      available: {type: Boolean },
+    },
+    default: {patient_id: null, available: true}
+  },
+  slot3:{
+    type:{
+      patient_id:{ type: mongoose.Schema.Types.ObjectId  },
+      available: {type: Boolean },
+    },
+    default: {patient_id: null, available: true}
+  },
+  slot4:{
+    type:{
+      patient_id:{ type: mongoose.Schema.Types.ObjectId  },
+      available: {type: Boolean },
+    },
+    default: {patient_id: null, available: true}
+  },
+  slot5:{
+    type:{
+      patient_id:{ type: mongoose.Schema.Types.ObjectId  },
+      available: {type: Boolean },
+    },
+    default: {patient_id: null, available: true}
+  },
+
 });
 
 const Doctor = mongoose.model('Doctor', DoctorSchema);

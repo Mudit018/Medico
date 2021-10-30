@@ -37,10 +37,11 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 // ROUTES
 const login = require("./routes/auth");
 app.use("/api", login);
+const appointment = require("./routes/appointment");
+app.use("/appointment",appointment);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, console.log(`Server started on port ${PORT}`));

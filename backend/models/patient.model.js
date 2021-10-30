@@ -40,7 +40,7 @@ const PatientSchema = mongoose.Schema({
     type: [
       {
         doctor_id: { type: mongoose.Schema.Types.ObjectId, required: true },
-        time: {type: Date , required: true}
+        slot: String,
       },
     ],
     default: [],
