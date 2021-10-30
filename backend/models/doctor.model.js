@@ -50,6 +50,10 @@ const DoctorSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  fees:{
+    type:Number,
+    required:true
+  },
   slot1:{
     type:{
       patient_id:{ type: mongoose.Schema.Types.ObjectId },
