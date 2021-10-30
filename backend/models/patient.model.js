@@ -21,13 +21,23 @@ const PatientSchema = mongoose.Schema({
   },
   age: {
     type: Number,
-    // required: true,
   },
   gender: {
     type: String,
-    // required: true,
-    enum: ["M", "F"],
   },
+  bloodGroup:{
+    type: String,
+  },
+  weight:{
+    type: String,
+  },
+  height:{
+    type: String,
+  },
+  phone:{
+    type:Number,
+  },
+
   hash: {
     type: String,
     required: true,
